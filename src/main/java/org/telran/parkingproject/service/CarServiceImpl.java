@@ -2,7 +2,7 @@ package org.telran.parkingproject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.telran.parkingproject.dao.CarRepository;
+import org.telran.parkingproject.dao.CarJpaRepository;
 import org.telran.parkingproject.model.Car;
 
 import java.util.List;
@@ -11,16 +11,18 @@ import java.util.List;
 public class CarServiceImpl implements CarService {
 
     @Autowired
-    private CarRepository carRepository;
+    private CarJpaRepository carRepository;
+
 
     @Override
     public List<Car> list() {
-        return carRepository.list();
+        return carRepository.findAll();
+        // return carRepository.list();
     }
 
     @Override
     public Car getCar(int id) {
-        return carRepository.getCar(id);
+        return carRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -30,11 +32,13 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car update(Car car) {
+
         return null;
     }
 
     @Override
-    public boolean remove(int id) {
-        return carRepository.remove(id);
+    public void remove(int id) {
+        Car byId = getCar(id);
+        carRepository.delete(byId);
     }
 }

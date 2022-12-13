@@ -1,6 +1,5 @@
 package org.telran.parkingproject.service;
 
-
 import org.telran.parkingproject.model.Car;
 
 import java.util.List;
@@ -15,5 +14,5 @@ public interface CarService {
 
     Car update (Car car);
 
-    boolean remove(int id);
+    void remove(int id);
 }

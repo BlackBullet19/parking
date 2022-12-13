@@ -3,31 +3,27 @@ package org.telran.parkingproject.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "car")
-public class Car {
+@Table(name = "bike")
+public class Bike {
 
-    @Column(name = "name")
-    private String name;
+        @Column(name = "name")
+        private String name;
 
-    @Column(name = "year_of_construction")
-    private int yearOfConstruction;
+        @Column(name = "year_of_construction")
+        private int yearOfConstruction;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id
-    private int id;
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Id
+        private int id;
 
-    @Column(name = "colour")
-    private String colour;
-
-    public Car() {
-        //
-    }
-
-    public Car(String name, int yearOfConstruction, int id, String colour) {
+    public Bike(String name, int yearOfConstruction, int id) {
         this.name = name;
         this.yearOfConstruction = yearOfConstruction;
         this.id = id;
-        this.colour = colour;
+    }
+
+    public Bike() {
+        //
     }
 
     public String getName() {
@@ -52,13 +48,5 @@ public class Car {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
     }
 }

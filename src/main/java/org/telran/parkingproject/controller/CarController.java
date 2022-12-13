@@ -30,7 +30,7 @@ public class CarController {
     }
 
     @DeleteMapping("/{id}")
-    public Boolean remove(@PathVariable(name = "id") int id){
-        return service.remove(id);
+    public void remove(@PathVariable(name = "id") int id){
+        service.remove(id);
     }
 }
